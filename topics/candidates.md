@@ -6,7 +6,7 @@
 
 | 代號 | 題目 | 狀態 | 理由(一行) | 評估頁 |
 |---|---|---|---|---|
-| kv-offload-aging-flash | 可靠度感知的 KV cache 卸載:老化 flash 上「載入或重算」的最優決策 | 未定 | 缺:實際使用條件下 read retry 讓讀取吞吐量下降多少 | [頁面](kv-offload-aging-flash.md) |
+| kv-offload-aging-flash | 可靠度感知的 KV cache 卸載:老化 flash 上「載入或重算」的最優決策 | 未定 | 事實已查到:一次重試就讓吞吐量減半,2K P/E 零存放約 2 次;等我決定保留或丟棄。剩下的風險:韌體可能已把重試壓到近零 | [頁面](kv-offload-aging-flash.md) |
 | kv-zns-write-amp | KV cache 生命週期與 ZNS zone 對齊:寫入放大的解析模型 | 待評估 | | |
 | ifc-bounded-declassification | 有界洩漏的降級:讓資訊流控制的 LLM agent 不再過度封鎖 | 未定 | 缺:在多 agent、有狀態的系統上 IFC 的效用損失有多大;另外學習成本超過上限 | [頁面](ifc-bounded-declassification.md) |
 | agent-injection-epidemic | 多 agent 系統中 prompt injection 的傳播:流行病模型與閾值 | 待評估 | | |
@@ -16,4 +16,5 @@
 | 5g-core-metastability | 5G 核心網控制面在信令風暴下的排隊模型與准入控制 | 待評估 | | |
 | eew-conformal | 具保證涵蓋率的地震預警:時空分佈偏移下的 conformal prediction | 待評估 | | |
 | tee-llm-perf-model | 機密運算下 LLM 推論的效能模型 | 待評估 | | |
+| kv-hbf-read-retry | 同一個問題搬到 HBF(High-Bandwidth Flash):read retry 對「維持 HBM 級讀取頻寬」的影響 | 待評估 | 由 kv-offload-aging-flash 的評估衍生;2026 下半年的論文多在 HBF 上 | |
 | tfm | 區塊鏈交易手續費機制(transaction fee mechanism);見 `maps/transaction-fee-mechanisms.md` | 待評估 | 這是一個領域,還不是題目;需要先收斂到其中一個方向 | |
