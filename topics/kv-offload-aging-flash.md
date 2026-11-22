@@ -1,7 +1,7 @@
 ---
 candidate: kv-offload-aging-flash
 date: 2026-11-22
-verdict: undecided
+verdict: keep
 sources:
   swarm: {ref: "arXiv:2603.17803", title: "Swarm: Co-Activation Aware KVCache Offloading Across Multiple SSDs"}
   kvdrive: {ref: "arXiv:2605.18071", title: "KVDrive: A Holistic Multi-Tier KV Cache Management System for Long-Context LLM Inference"}
@@ -95,4 +95,14 @@ SSD 老化後讀取變慢,那麼「從 SSD 載入 KV cache」和「在 GPU 上�
 | 6. 有人能指導 | 符合 | 依報告;本 session 未查證 |
 
 ## 結論
-待你決定(保留或丟棄)。原本缺的事實已經查到大半:**重試一發生,循序讀取吞吐量至少減半;2K P/E、零存放時間的 TLC 平均約 2 次重試。** 剩下的不確定換成了另一件事:現代 SSD 的韌體是否已經把重試壓到接近零,而這只有做 flash 的教授或實機量測能回答。
+**保留**(2026-11-22,我的決定)。理由:我認為還是很有機會。
+
+我認為當前最大的問題:市售 SSD 不會回報重試次數。如果拿不到可以計算重試次數的 SSD,就完全無法做可驗證的過程。
+
+什麼情況下重新考慮:確認拿不到任何能觀察或推得重試的平台時,丟棄。
+
+待查的替代途徑(agent 提出,皆為 [model-only],尚未查證):
+- 只量主機端看得到的東西:把一顆 SSD 寫到高 P/E,量循序讀取吞吐量隨磨耗與存放時間的變化。模型要預測的是載入時間,不一定需要重試次數本身。
+- 開放韌體的平台(例如 Cosmos+ OpenSSD),可以在韌體裡自己計數。
+- FEMU 注入重試參數;只能當輔助,不能當唯一的驗證。
+- 問做 flash 的教授:實驗室有沒有晶片測試平台,或廠商的 log page 有沒有重試計數。

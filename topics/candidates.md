@@ -6,7 +6,7 @@
 
 | 代號 | 題目 | 狀態 | 理由(一行) | 評估頁 |
 |---|---|---|---|---|
-| kv-offload-aging-flash | 可靠度感知的 KV cache 卸載:老化 flash 上「載入或重算」的最優決策 | 未定 | 事實已查到:一次重試就讓吞吐量減半,2K P/E 零存放約 2 次;等我決定保留或丟棄。剩下的風險:韌體可能已把重試壓到近零 | [頁面](kv-offload-aging-flash.md) |
+| kv-offload-aging-flash | 可靠度感知的 KV cache 卸載:老化 flash 上「載入或重算」的最優決策 | 保留 | 我認為還是很有機會;最大問題是市售 SSD 不回報重試次數,拿不到可計重試的平台就無法驗證 | [頁面](kv-offload-aging-flash.md) |
 | kv-zns-write-amp | KV cache 生命週期與 ZNS zone 對齊:寫入放大的解析模型 | 待評估 | | |
 | ifc-bounded-declassification | 有界洩漏的降級:讓資訊流控制的 LLM agent 不再過度封鎖 | 未定 | 缺:在多 agent、有狀態的系統上 IFC 的效用損失有多大;另外學習成本超過上限 | [頁面](ifc-bounded-declassification.md) |
 | agent-injection-epidemic | 多 agent 系統中 prompt injection 的傳播:流行病模型與閾值 | 待評估 | | |
